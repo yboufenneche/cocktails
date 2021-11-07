@@ -5,10 +5,10 @@ import { Directive, HostBinding, Input, OnChanges } from '@angular/core';
 })
 export class SelectedDirective implements OnChanges {
   @Input() private appSelected: boolean = false;
-  @HostBinding('style.backgroundColor') private backgroundColor: string =
+  @HostBinding('style.backgroundColor') private backgroundColor?: string =
     'white';
-  @HostBinding('style.color') private color: string = 'var(--text-regular)';
-  @HostBinding('style.fontWeight') private fontWeight: string = '400';
+  @HostBinding('style.color') private color?: string = 'var(--text-regular)';
+  @HostBinding('style.fontWeight') private fontWeight?: string = '400';
 
   ngOnChanges(): void {
     if (this.appSelected) {
