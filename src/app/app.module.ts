@@ -7,6 +7,10 @@ import { CocktailListComponent } from './cocktails-container/cocktail-list/cockt
 import { CocktailDetailsComponent } from './cocktails-container/cocktail-details/cocktail-details.component';
 import { CocktailsContainerComponent } from './cocktails-container/cocktails-container.component';
 import { SelectedDirective } from './shared/directives/selected.directive';
+import { PanierContainerComponent } from './panier-container/panier-container.component';
+import { IngredientListComponent } from './panier-container/ingredient-list/ingredient-list.component';
+import { RouterModule } from '@angular/router';
+import { APP_ROUTES } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -16,8 +20,10 @@ import { SelectedDirective } from './shared/directives/selected.directive';
     CocktailDetailsComponent,
     CocktailsContainerComponent,
     SelectedDirective,
+    PanierContainerComponent,
+    IngredientListComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, RouterModule.forRoot(APP_ROUTES)],
   providers: [],
   bootstrap: [AppComponent],
 })

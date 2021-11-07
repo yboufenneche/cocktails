@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { CocktailService } from '../shared/cocktail.service';
 import { Cocktail } from '../shared/interfaces/cocktail.interface';
+import { CocktailService } from '../shared/services/cocktail.service';
 
 @Component({
   selector: 'app-cocktails-container',
@@ -9,11 +9,11 @@ import { Cocktail } from '../shared/interfaces/cocktail.interface';
   styleUrls: ['./cocktails-container.component.scss'],
 })
 export class CocktailsContainerComponent implements OnInit, OnDestroy {
-  // list of cocktails
-  public cocktails?: Cocktail[];
-
   // selected cocktail in cocktails list
   public selectedCocktail!: Cocktail;
+
+  // list of cocktails
+  public cocktails?: Cocktail[];
 
   // create a new subsciption
   public subscription: Subscription = new Subscription();
@@ -21,25 +21,21 @@ export class CocktailsContainerComponent implements OnInit, OnDestroy {
   // inject cocktailService via the constructor
   constructor(private cocktailService: CocktailService) {}
 
-  // change the selected cocktail
-  public changeCocktail(index: number): void {
-    // this.selectedCocktail = this.cocktails[index];
-  }
-
   //
-  ngOnInit(): void {
+  ngOnInit() {
     // get the list of cocktails from the service cocktailService (cocktails$ BehaviorSubject)
     this.subscription.add(
-      this.cocktailService.cocktails$.subscribe(
-        (cocktails: Cocktail[]) => (this.cocktails = cocktails)
-      )
+      this.cocktailService.cocktails$.subscribe((cocktails: Cocktail[]) => {
+        this.cocktails = cocktails;
+      })
     );
 
     // get the selected cocktail from the service cocktailService (selectedCocktails$ BehaviorSubject)
     this.subscription.add(
       this.cocktailService.selectedCocktail$.subscribe(
-        (selectedCocktail: Cocktail) =>
-          (this.selectedCocktail = selectedCocktail)
+        (selectedCocktail: Cocktail) => {
+          this.selectedCocktail = selectedCocktail;
+        }
       )
     );
   }
