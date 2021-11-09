@@ -17,6 +17,17 @@ a {
   color: inherit;
 }
 
+input {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 8px 15px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 :root {
   --font-family: "Roboto", sans-serif;
   --primary: #546de5;
@@ -129,6 +140,7 @@ body {
 
 .active {
   background-color: var(--secondary);
+  color: white;
 }
 
 .list-primary {
@@ -162,6 +174,9 @@ body {
       background-color: var(--secondary);
     }
     transition: background-color 0.4s;
+  }
+  &-secondary {
+    background-color: #ddd;
   }
 }
 
