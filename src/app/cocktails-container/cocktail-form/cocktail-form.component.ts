@@ -7,7 +7,9 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
   styleUrls: ['./cocktail-form.component.scss'],
 })
 export class CocktailFormComponent implements OnInit {
-  // Getter for ingredients
+  /**
+   * Getter for ingredients
+   */
   public get ingredients() {
     return this.cocktailForm.get('ingredients') as FormArray;
   }
@@ -15,7 +17,9 @@ export class CocktailFormComponent implements OnInit {
   // Create a new FormGroup
   public cocktailForm!: FormGroup;
 
-  // Inject a FormBuilder to create a from
+  /**
+   * Inject a FormBuilder to create a from
+   */
   constructor(private fb: FormBuilder) {}
 
   //
@@ -27,14 +31,15 @@ export class CocktailFormComponent implements OnInit {
       ingredients: this.fb.array([], Validators.required),
     });
   }
-
-  // Action when we submit the form
+  /**
+   * Action when we submit the form
+   */
   public submit(): void {
     console.log(this.cocktailForm);
   }
 
   /**
-   * addIngredient
+   * Add and ingredient
    */
   public addIngredient(): void {
     this.ingredients.push(
