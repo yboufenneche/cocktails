@@ -23,6 +23,11 @@ input {
   padding: 8px 15px;
 }
 
+hr {
+  margin: 20px 0px;
+  border-top: 1px solid #ddd;
+}
+
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
